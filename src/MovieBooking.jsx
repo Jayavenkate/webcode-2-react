@@ -1,43 +1,33 @@
+import { useEffect } from "react";
 import { useState } from "react";
 
 export function MovieBooking() {
-  let screens = [
-    {
-      id: 1,
-      time: "10.00am",
-      seats: [1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1],
-    },
-    {
-      id: 2,
-      time: "2.00am",
-      seats: [1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1],
-    },
-    {
-      id: 3,
-      time: "6.00am",
-      seats: [1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1],
-    },
-  ];
-  const [movies, setMovie] = useState([
-    {
-      id: 1,
-      title: "Vikram",
-      image:
-        "https://m.media-amazon.com/images/M/MV5BMmJhYTYxMGEtNjQ5NS00MWZiLWEwN2ItYjJmMWE2YTU1YWYxXkEyXkFqcGdeQXVyMTEzNzg0Mjkx._V1_.jpg",
-    },
-    {
-      id: 2,
-      title: "Jai Bhim",
-      image:
-        "https://m.media-amazon.com/images/M/MV5BY2Y5ZWMwZDgtZDQxYy00Mjk0LThhY2YtMmU1MTRmMjVhMjRiXkEyXkFqcGdeQXVyMTI1NDEyNTM5._V1_FMjpg_UX1000_.jpg",
-    },
-    {
-      id: 3,
-      title: "Iron man 2",
-      image:
-        "https://m.media-amazon.com/images/M/MV5BMTM0MDgwNjMyMl5BMl5BanBnXkFtZTcwNTg3NzAzMw@@._V1_FMjpg_UX1000_.jpg",
-    },
-  ]);
+  let [screens, setScreen] = useState([]);
+
+  const [movies, setMovie] = useState([]);
+  
+  const getmovies = () => {
+    fetch("http://localhost:8000/showmovies", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+      },
+    })
+      .then((data) => data.json())
+      .then((movie) => setMovie(movie));
+  };
+  
+  const getscreen = () => {
+    fetch("http://localhost:8000/screens", {
+      method: "GET",
+      headers: { "Content-type": "application/json" },
+    })
+      .then((data) => data.json())
+      .then((screen) => setScreen(screen));
+  };
+  useEffect(() => getmovies(), []);
+  useEffect(() => getscreen(), []);
+  
   const [selectedScreen, setSelectedScreen] = useState(null);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [selectedSeats, setSelectedSeats] = useState([]);
@@ -61,10 +51,10 @@ export function MovieBooking() {
         selectedScreen.movie.title
       } at ${selectedScreen.time}`
     );
-    screens = screens.map(screen => {
+    screens = screens.map((screen) => {
       if (screen.id === selectedScreen?.id) {
         let seats = screen.seats;
-        selectedSeats.map((seat) => (seats[seat] = 0))
+        selectedSeats.map((seat) => (seats[seat] = 0));
         return {
           ...screen,
           seats,
@@ -81,10 +71,10 @@ export function MovieBooking() {
       <h1>Movie Booking App</h1>
       <h2>Choose your movie :</h2>
       <div className="movie-selection">
-        {movies.map((movie) => (
+        {movies.map((movie, _id) => (
           <div
             className="movie"
-            key={movie.id}
+            key={_id}
             onClick={() => setSelectedMovie(movie)}
           >
             <img className="movie-poster" src={movie.image} alt={movie.title} />
@@ -96,9 +86,9 @@ export function MovieBooking() {
         <>
           <h2>choose your screen</h2>
           <div className="screen-selection">
-            {screens.map((screen) => (
+            {screens.map((screen, _id) => (
               <div
-                key={screen.id}
+                key={_id}
                 className={`screen ${
                   screen?.id === selectedScreen?.id ? "selected" : ""
                 } ${screen.seats.includes(1) ? "available" : ""}`}
@@ -162,7 +152,7 @@ export function MovieBooking() {
       <button
         className="payment-button"
         onClick={handleBooking}
-        disabled={!selectedScreen || selectedSeats?.length ===0}
+        disabled={!selectedScreen || selectedSeats?.length === 0}
       >
         Book Now
       </button>
