@@ -6,23 +6,16 @@ export function MovieBooking() {
 
   const [movies, setMovie] = useState([]);
 
-  const getmovies = () => {
+  useEffect(() => {
     fetch("http://localhost:8000/showmovies")
-      .then((data) => data.json())
-      .then((mvs) => setMovie(mvs));
-  };
-
-  const getscreen = () => {
-    fetch("http://localhost:8000/screens")
-      .then((data) => data.json())
-      .then((srn) => setScreen(srn));
-  };
-
-  useEffect(() => {
-    getmovies();
+      .then((res) => res.json())
+      .then((data) => setMovie(data));
   }, []);
+
   useEffect(() => {
-    getscreen();
+    fetch("http://localhost:8000/screens")
+      .then((res) => res.json())
+      .then((data) => setScreen(data));
   }, []);
 
   const [selectedScreen, setSelectedScreen] = useState(null);
@@ -68,7 +61,7 @@ export function MovieBooking() {
       <h1>Movie Booking App</h1>
       <h2>Choose your movie :</h2>
       <div className="movie-selection">
-        {movies.map((movie,id) => (
+        {movies.map((movie, id) => (
           <div
             className="movie"
             key={id}
