@@ -24,13 +24,13 @@ export function MovieBooking() {
     }
   };
   useEffect(() => {
-    fetch("http://localhost:8000/showmovies")
+    fetch("https://webcode-2-node.vercel.app/showmovies")
       .then((res) => res.json())
       .then((data) => setMovie(data));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:8000/screens")
+    fetch("https://webcode-2-node.vercel.app/screens")
       .then((res) => res.json())
       .then((data) => setScreen(data));
   }, []);
