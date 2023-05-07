@@ -14,7 +14,7 @@ export function MovieBooking() {
       // },
     })
       .then((data) => data.json())
-      .then((movie) => setMovie(movie));
+      .then((mvs) => setMovie(mvs));
   };
 
   const getscreen = () => {
