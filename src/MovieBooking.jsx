@@ -6,18 +6,6 @@ export function MovieBooking() {
 
   const [movies, setMovie] = useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost:8000/showmovies")
-      .then((res) => res.json())
-      .then((data) => setMovie(data));
-  }, []);
-
-  useEffect(() => {
-    fetch("http://localhost:8000/screens")
-      .then((res) => res.json())
-      .then((data) => setScreen(data));
-  }, []);
-
   const [selectedScreen, setSelectedScreen] = useState(null);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [selectedSeats, setSelectedSeats] = useState([]);
@@ -35,6 +23,17 @@ export function MovieBooking() {
       setSelectedSeats((seats) => [...seats, index]);
     }
   };
+  useEffect(() => {
+    fetch("http://localhost:8000/showmovies")
+      .then((res) => res.json())
+      .then((data) => setMovie(data));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/screens")
+      .then((res) => res.json())
+      .then((data) => setScreen(data));
+  }, []);
   const handleBooking = () => {
     alert(
       `Seats ${selectedSeats.map((index) => index + 1).join(", ")} booked for ${
