@@ -7,13 +7,13 @@ export function MovieBooking() {
   const [movies, setMovie] = useState([]);
 
   const getmovies = () => {
-    fetch("http://localhost:8000/createshow")
+    fetch("http://localhost:8000/showmovies")
       .then((data) => data.json())
       .then((mvs) => setMovie(mvs));
   };
 
   const getscreen = () => {
-    fetch("http://localhost:8000/createscreen")
+    fetch("http://localhost:8000/screens")
       .then((data) => data.json())
       .then((srn) => setScreen(srn));
   };
