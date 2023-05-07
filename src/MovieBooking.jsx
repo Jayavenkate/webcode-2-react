@@ -9,9 +9,9 @@ export function MovieBooking() {
   const getmovies = () => {
     fetch("http://localhost:8000/showmovies", {
       method: "GET",
-      headers: {
-        "Content-type": "application/json",
-      },
+      // headers: {
+      //   "Content-type": "application/json",
+      // },
     })
       .then((data) => data.json())
       .then((movie) => setMovie(movie));
@@ -20,7 +20,7 @@ export function MovieBooking() {
   const getscreen = () => {
     fetch("http://localhost:8000/screens", {
       method: "GET",
-      headers: { "Content-type": "application/json" },
+      // headers: { "Content-type": "application/json" },
     })
       .then((data) => data.json())
       .then((screen) => setScreen(screen));
