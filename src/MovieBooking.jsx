@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { API } from "../global";
 
 export function MovieBooking() {
   let [screens, setScreen] = useState([]);
@@ -24,13 +25,13 @@ export function MovieBooking() {
     }
   };
   useEffect(() => {
-    fetch("https://webcode-2-node.vercel.app/showmovies")
+    fetch(`${API}/showmovies`)
       .then((res) => res.json())
       .then((data) => setMovie(data));
   }, []);
 
   useEffect(() => {
-    fetch("https://webcode-2-node.vercel.app/screens")
+    fetch(`${API}/screens`)
       .then((res) => res.json())
       .then((data) => setScreen(data));
   }, []);
