@@ -72,10 +72,10 @@ export function MovieBooking() {
       <h1>Movie Booking App</h1>
       <h2>Choose your movie :</h2>
       <div className="movie-selection">
-        {movies.map((movie, _id) => (
+        {movies.map((movie,id) => (
           <div
             className="movie"
-            key={_id}
+            key={id}
             onClick={() => setSelectedMovie(movie)}
           >
             <img className="movie-poster" src={movie.image} alt={movie.title} />
