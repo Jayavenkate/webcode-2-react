@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 export function MovieBooking() {
-  // let [screens, setScreen] = useState([]);
+  let [screens, setScreen] = useState([]);
 
   const [movies, setMovie] = useState([]);
 
@@ -12,11 +12,11 @@ export function MovieBooking() {
       .then((data) => setMovie(data));
   }, []);
 
-  // useEffect(() => {
-  //   fetch("http://localhost:8000/screens")
-  //     .then((res) => res.json())
-  //     .then((data) => setScreen(data));
-  // }, []);
+  useEffect(() => {
+    fetch("http://localhost:8000/screens")
+      .then((res) => res.json())
+      .then((data) => setScreen(data));
+  }, []);
 
   const [selectedScreen, setSelectedScreen] = useState(null);
   const [selectedMovie, setSelectedMovie] = useState(null);
