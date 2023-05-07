@@ -5,7 +5,7 @@ export function MovieBooking() {
   let [screens, setScreen] = useState([]);
 
   const [movies, setMovie] = useState([]);
-  
+
   const getmovies = () => {
     fetch("http://localhost:8000/showmovies", {
       method: "GET",
@@ -16,7 +16,7 @@ export function MovieBooking() {
       .then((data) => data.json())
       .then((movie) => setMovie(movie));
   };
-  
+
   const getscreen = () => {
     fetch("http://localhost:8000/screens", {
       method: "GET",
@@ -25,9 +25,14 @@ export function MovieBooking() {
       .then((data) => data.json())
       .then((screen) => setScreen(screen));
   };
-  useEffect(() => getmovies(), []);
-  useEffect(() => getscreen(), []);
-  
+
+  useEffect(() => {
+    getmovies();
+  }, []);
+  useEffect(() => {
+    getscreen();
+  }, []);
+
   const [selectedScreen, setSelectedScreen] = useState(null);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [selectedSeats, setSelectedSeats] = useState([]);
