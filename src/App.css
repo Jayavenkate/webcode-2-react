@@ -1,3 +1,6 @@
+body{
+  background-image: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwoICAgIBwgIBwcHBwoHBwcHCA8ICQcWIBEiFhURExMYHSggGBolGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIALEBHAMBIgACEQEDEQH/xAAWAAEBAQAAAAAAAAAAAAAAAAAAAQb/xAAVEAEBAAAAAAAAAAAAAAAAAAAAAf/EABYBAQEBAAAAAAAAAAAAAAAAAAAFBP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/ANKAtNgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACKAAUEFgCCwBBQEFAQUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAFQBUAFQAVABRFAAAAAAAAAAAAAAAAAAAAAAAAAEAVFQFRQEBQQFBAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAVAFAAAAAAAAAAAAAAAAAAAAAAAABAUQBRAFQAVABQAAAAAAAAAAAAAAAAAAAAAAAKAAIAAAAAAAAAAAoAAAAAAAAAAAAAAAAAAAAAP/Z");
+}
 .App {
   text-align: center;
 }
@@ -30,6 +33,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+ 
 }
 .screen-selection .screen {
   margin: 1rem;
@@ -38,6 +42,7 @@
   /* cursor: pointer; */
   transition: all 0.2s;
   padding: 1rem;
+  background-color:white ;
 }
 .screen-selection .screen .hover {
   transform: scale(1.05);
@@ -67,6 +72,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  /* background-color: azure; */
 }
 .screen-selection .screen-seats .seat {
   width: 2rem;
@@ -76,6 +82,7 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   transition: all 0.2s;
+  background-color: aliceblue;
 }
 .screen-selection .screen-seats .seat.selected {
   background-color: rgb(9, 212, 22);
@@ -89,7 +96,7 @@
 .payment-button {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
-  background-color: blue;
+  background-color: rgb(255, 0, 0);
   color: azure;
   border: none;
   border-radius: 0.5rem;
