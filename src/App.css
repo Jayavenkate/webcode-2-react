@@ -1,5 +1,8 @@
-body{
+body {
+  margin: 0;
   background-image: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwoICAgIBwgIBwcHBwoHBwcHCA8ICQcWIBEiFhURExMYHSggGBolGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIALEBHAMBIgACEQEDEQH/xAAWAAEBAQAAAAAAAAAAAAAAAAAAAQb/xAAVEAEBAAAAAAAAAAAAAAAAAAAAAf/EABYBAQEBAAAAAAAAAAAAAAAAAAAFBP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/ANKAtNgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACKAAUEFgCCwBBQEFAQUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAFQBUAFQAVABRFAAAAAAAAAAAAAAAAAAAAAAAAAEAVFQFRQEBQQFBAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAVAFAAAAAAAAAAAAAAAAAAAAAAAABAUQBRAFQAVABQAAAAAAAAAAAAAAAAAAAAAAAKAAIAAAAAAAAAAAoAAAAAAAAAAAAAAAAAAAAAP/Z");
+
+  /* background-color: #e53f71; */
 }
 .App {
   text-align: center;
@@ -33,7 +36,6 @@ body{
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
- 
 }
 .screen-selection .screen {
   margin: 1rem;
@@ -42,7 +44,7 @@ body{
   /* cursor: pointer; */
   transition: all 0.2s;
   padding: 1rem;
-  background-color:white ;
+  background-color: white;
 }
 .screen-selection .screen .hover {
   transform: scale(1.05);
@@ -96,7 +98,7 @@ body{
 .payment-button {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
-  background-color: rgb(255, 0, 0);
+  background-color: rgb(208, 0, 255);
   color: azure;
   border: none;
   border-radius: 0.5rem;
@@ -110,4 +112,13 @@ body{
 .payment-button:disabled {
   cursor: not-allowed;
   background-color: grey;
+}
+.signup-container {
+  display: flex;
+  width: 400px;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 0 auto;
 }
