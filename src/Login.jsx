@@ -9,12 +9,13 @@ import { API } from "../global";
 
 const formValidationSchema = yup.object({
   email: yup.string().email().required("Email address is required"),
+
   password: yup.string().required("password required").min(8),
 });
 export function Login() {
   const navigate = useNavigate();
 
-  // const [formState, setFormState] = useState("success");
+  const [formState, setFormState] = useState("success");
   const { values, handleSubmit, handleChange, handleBlur, touched, errors } =
     useFormik({
       initialValues: {
@@ -24,7 +25,6 @@ export function Login() {
       validationSchema: formValidationSchema,
       onSubmit: async (values) => {
         console.log(values);
-
         const data = await fetch(`${API}/login`, {
           method: "POST",
           headers: {
@@ -32,16 +32,17 @@ export function Login() {
           },
           body: JSON.stringify(values),
         });
-        // if (data.status === 401) {
-        //   console.log("error");
-        //   setFormState("error");
-        // } else {
-          // setFormState("success");
+        if (data.status === 401) {
+          console.log("error");
+          setFormState("error");
+        } else {
+          setFormState("success");
+
           const result = await data.json();
           console.log("success", result);
           localStorage.setItem("token", result.token);
           navigate("/moviebooking");
-        // }
+        }
       },
     });
   return (
@@ -59,7 +60,7 @@ export function Login() {
             error={touched.email && errors.email}
             helperText={touched.email && errors.email ? errors.email : null}
           />
-
+          {/* <p>priya@gmail.com</p> */}
           <TextField
             name="password"
             value={values.password}
@@ -72,15 +73,17 @@ export function Login() {
               touched.password && errors.password ? errors.password : null
             }
           />
-
+          {/* <p>priyakumar123</p> */}
+          {/* <span>
+          <Checkbox onClick={togglePassword}aria-label="Checkbox demo"/>
+            show password</span> */}
           <Button
-            // color={formState}
+            color={formState}
             type="submit"
             variant="contained"
             sx={{ width: "400px" }}
           >
-            Submit
-            {/* {formState === "success" ? "Submit" : "Retry"} */}
+            {formState === "success" ? "Submit" : "Retry"}
           </Button>
           <small
             sx={{ cursor: "pointer" }}
