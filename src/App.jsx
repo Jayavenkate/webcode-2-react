@@ -13,6 +13,7 @@ import { Login } from "./Login";
 import { ForgetPass } from "./ForgetPass";
 import { VerifyOtp } from "./VerifyOtp";
 import { SetPassword } from "./SetPassword";
+import { Home } from "./Home";
 
 export default function App() {
   const navigate = useNavigate();
@@ -24,9 +25,9 @@ export default function App() {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               BOOK MY SHOW
             </Typography>
-            <Button color="inherit" onClick={() => navigate("/signup")}>
+            {/* <Button color="inherit" onClick={() => navigate("/moviebooking")}>
               SignUp
-            </Button>
+            </Button> */}
             <Button color="inherit" onClick={() => navigate("/")}>
               Home
             </Button>
@@ -34,7 +35,8 @@ export default function App() {
         </AppBar>
       </div>
       <Routes>
-        <Route path="/" element={<MovieBooking />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/moviebooking" element={<MovieBooking />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/login/forgetpassword" element={<ForgetPass />} />
