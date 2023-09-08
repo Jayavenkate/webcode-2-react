@@ -4,9 +4,7 @@ import { API } from "../global";
 
 export function MovieBooking() {
   let [screens, setScreen] = useState([]);
-
   const [movies, setMovie] = useState([]);
-
   const [selectedScreen, setSelectedScreen] = useState(null);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [selectedSeats, setSelectedSeats] = useState([]);

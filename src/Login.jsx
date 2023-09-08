@@ -25,21 +25,21 @@ export function Login() {
       onSubmit: async (values) => {
         console.log(values);
 
-        // const data = await fetch(`${API}/login`, {
-        //   method: "POST",
-        //   headers: {
-        //     "content-type": "application/json",
-        //   },
-        //   body: JSON.stringify(values),
-        // });
+        const data = await fetch(`${API}/login`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(values),
+        });
         // if (data.status === 401) {
         //   console.log("error");
         //   setFormState("error");
         // } else {
-        //   setFormState("success");
-          // const result = await data.json();
-          // console.log("success", result);
-          // localStorage.setItem("token", result.token);
+          setFormState("success");
+          const result = await data.json();
+          console.log("success", result);
+          localStorage.setItem("token", result.token);
           navigate("/moviebooking");
         // }
       },
