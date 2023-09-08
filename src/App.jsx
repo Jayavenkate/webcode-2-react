@@ -5,11 +5,14 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+
 import { MovieBooking } from "./MovieBooking";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import { SignUp } from "./SignUp";
+import { Login } from "./Login";
+import { ForgetPass } from "./ForgetPass";
+import { VerifyOtp } from "./VerifyOtp";
+import { SetPassword } from "./SetPassword";
 
 export default function App() {
   const navigate = useNavigate();
@@ -33,6 +36,10 @@ export default function App() {
       <Routes>
         <Route path="/" element={<MovieBooking />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/login/forgetpassword" element={<ForgetPass />} />
+        <Route path="/verifyotp" element={<VerifyOtp />} />
+        <Route path="/setpassword" element={<SetPassword />} />
       </Routes>
     </div>
   );

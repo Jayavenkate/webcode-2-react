@@ -2,58 +2,47 @@ import { Button, Card, CardContent } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
+
 import * as yup from "yup";
+import { useState } from "react";
 import { API } from "../global";
 
 const formValidationSchema = yup.object({
-  name: yup.string().required("required"),
   email: yup.string().email().required("Email address is required"),
+
   password: yup.string().required("password required").min(8),
 });
-export function SignUp() {
+export function SetPassword() {
   const navigate = useNavigate();
-  const reDirect = () => {
-    navigate("/login");
-  };
 
   const { values, handleSubmit, handleChange, handleBlur, touched, errors } =
     useFormik({
       initialValues: {
-        name: "",
         email: "",
         password: "",
       },
       validationSchema: formValidationSchema,
       onSubmit: async (values) => {
         console.log(values);
-
-        const data = await fetch(`${API}/signup`, {
+        const data = await fetch(`${API}/setpassword`, {
           method: "POST",
-          body: JSON.stringify(values),
           headers: {
             "content-type": "application/json",
           },
+          body: JSON.stringify(values),
         });
-        const result = await data.json();
-        console.log(data);
-        navigate("/login");
+        if (data.status === 401) {
+          console.log("error");
+        } else {
+          navigate("/login");
+        }
       },
     });
   return (
     <form onSubmit={handleSubmit}>
       <Card className="signup" elevation={4}>
-        <h2>SignUp </h2>
+        <h2>Reset your Password </h2>
         <CardContent className="card-container">
-          <TextField
-            name="name"
-            value={values.name}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            label="Name"
-            variant="outlined"
-            error={touched.name && touched.error}
-            helperText={touched.name && errors.name ? errors.name : null}
-          />
           <TextField
             name="email"
             value={values.email}
@@ -76,21 +65,14 @@ export function SignUp() {
               touched.password && errors.password ? errors.password : null
             }
           />
+          {/* <span>
+          <Checkbox onClick={togglePassword}aria-label="Checkbox demo"/>
+            show password</span> */}
 
-          <Button
-            type="submit"
-            color="success"
-            variant="contained"
-            sx={{ width: "400px" }}
-          >
-            Register
+          <Button color="secondary" variant="contained">
+            Confirm
           </Button>
-          <small> already registered ?</small>
         </CardContent>
-
-        <h5 className="sign-btn" onClick={() => reDirect()}>
-          Sign in
-        </h5>
       </Card>
     </form>
   );
