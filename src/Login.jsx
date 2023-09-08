@@ -14,7 +14,7 @@ const formValidationSchema = yup.object({
 export function Login() {
   const navigate = useNavigate();
 
-  const [formState, setFormState] = useState("success");
+  // const [formState, setFormState] = useState("success");
   const { values, handleSubmit, handleChange, handleBlur, touched, errors } =
     useFormik({
       initialValues: {
@@ -36,7 +36,7 @@ export function Login() {
         //   console.log("error");
         //   setFormState("error");
         // } else {
-          setFormState("success");
+          // setFormState("success");
           const result = await data.json();
           console.log("success", result);
           localStorage.setItem("token", result.token);
@@ -74,7 +74,7 @@ export function Login() {
           />
 
           <Button
-            color={formState}
+            // color={formState}
             type="submit"
             variant="contained"
             sx={{ width: "400px" }}
