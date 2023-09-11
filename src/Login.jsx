@@ -25,15 +25,15 @@ export function Login() {
       validationSchema: formValidationSchema,
       onSubmit: async (values) => {
         console.log(values);
-        const data = await fetch(`${API}/login`, {
-          method: "POST",
-          body: JSON.stringify(values),
-          headers: {
-            "content-type": "application/json",
-          },
-        });
-        const result = await data.json();
-        console.log(data);
+        // const data = await fetch(`${API}/login`, {
+        //   method: "POST",
+        //   body: JSON.stringify(values),
+        //   headers: {
+        //     "content-type": "application/json",
+        //   },
+        // });
+        // const result = await data.json();
+        // console.log(data);
 
         // localStorage.setItem("token", result.token);
         navigate("/moviebooking");
