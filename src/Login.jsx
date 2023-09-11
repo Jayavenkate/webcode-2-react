@@ -26,11 +26,11 @@ export function Login() {
       onSubmit: async (values) => {
         console.log(values);
         const data = await fetch(`${API}/login`, {
+          body: JSON.stringify(values),
           method: "POST",
           headers: {
             "content-type": "application/json",
           },
-          body: JSON.stringify(values),
         });
         if (data.status === 401) {
           console.log("error");
