@@ -32,17 +32,17 @@ export function Login() {
             "content-type": "application/json",
           },
         });
-        if (data.status === 401) {
-          console.log("error");
-          setFormState("error");
-        } else {
-          setFormState("success");
+        // if (data.status === 401) {
+        //   console.log("error");
+        //   setFormState("error");
+        // } else {
+        //   setFormState("success");
 
           const result = await data.json();
           console.log("success", result);
           localStorage.setItem("token", result.token);
           navigate("/moviebooking");
-        }
+        // }
       },
     });
   return (
