@@ -25,22 +25,22 @@ export function Login() {
       validationSchema: formValidationSchema,
       onSubmit: async (values) => {
         console.log(values);
-        const data = await fetch(`${API}/login`, {
-          body: JSON.stringify(values),
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-        });
+        // const data = await fetch(`${API}/login`, {
+        //   body: JSON.stringify(values),
+        //   method: "POST",
+        //   headers: {
+        //     "content-type": "application/json",
+        //   },
+        // });
         // if (data.status === 401) {
         //   console.log("error");
         //   setFormState("error");
         // } else {
         //   setFormState("success");
 
-          const result = await data.json();
-          console.log("success", result);
-          localStorage.setItem("token", result.token);
+          // const result = await data.json();
+          // console.log("success", result);
+          // localStorage.setItem("token", result.token);
           navigate("/moviebooking");
         // }
       },
@@ -105,3 +105,4 @@ export function Login() {
     </form>
   );
 }
+
