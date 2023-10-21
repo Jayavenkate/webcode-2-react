@@ -57,6 +57,7 @@ export function Login() {
           />
           {/* <p>priya@gmail.com</p> */}
           <TextField
+            type="password"
             name="password"
             value={values.password}
             onChange={handleChange}

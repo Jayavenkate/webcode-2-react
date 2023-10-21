@@ -65,6 +65,7 @@ export function SignUp() {
             helperText={touched.email && errors.email ? errors.email : null}
           />
           <TextField
+            type="password"
             name="password"
             value={values.password}
             onChange={handleChange}
